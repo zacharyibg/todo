@@ -10,11 +10,11 @@ export const Checkbox = ({
       role="checkbox"
       aria-checked
       className="checkbox-content"
-      onClick={onClick}
+      // onClick={onClick}
       onKeyUp={onKeyUp}
     >
       <input tabIndex="-1" type="checkbox" checked={checked} onChange={onClick} />
-      <span className={checked ? 'checkbox-checked' : ''}>{label}</span>
+      <span onClick={onClick} className={checked ? 'checkbox-checked' : ''}>{label}</span>
     </div>
     <button type="button" className="checkbox-delete" onClick={onDelete}>
       x
