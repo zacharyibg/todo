@@ -8,6 +8,12 @@ export const TodoList = () => {
 
   const handleDelete = (id) => {
     // Fix an ability to delete task
+    // create copy of state before mutating
+    let workingCopy = [...todos]
+    // find the index of the item that was clicked
+    const index = todos.indexOf(workingCopy.find(todo => todo.id === id));
+    workingCopy.splice(index,1);
+    setTodos(workingCopy);
   };
 
   const toggleCheck = (id) => {
