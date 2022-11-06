@@ -7,24 +7,23 @@ export const TodoForm = () => {
   const { todos, setTodos } = React.useContext(TodosContext);
   const [task, setTask] = React.useState('');
 
- //handleAddToDo
- const handleAddTodo = () => {
-  console.log('Add task clicked');
-  console.log('Text input value:', task);
-  // console.log(typeof task);
-  // e.preventDefault();
+  //handleAddToDo
+  const handleAddTodo = () => {
+    // console.log('Add task clicked');
+    // console.log('Text input value:', task);
+    // console.log(typeof task);
 
-  //add task to todoList
-  setTodos([...todos,
-  {
-    id: v4(),
-    label: task,
-    checked: false
-  }])
+    //add task to todoList
+    setTodos([...todos,
+    {
+      id: v4(),
+      label: task,
+      checked: false
+    }])
 
-  //clears out input after task added
-  setTask('');
-};
+    //clears out input after task added
+    setTask('');
+  };
 
   const handleKeyUp = (e) => {
     if (e.keyCode === 13) {
