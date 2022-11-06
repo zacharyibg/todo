@@ -16,6 +16,8 @@
   &-content {
     display: flex;
     justify-content: center;
+    // fix layout, checkboxes in a column
+    flex-direction: column;
   }
 }
 

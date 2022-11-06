@@ -4,46 +4,51 @@ import { TodoList } from './components/todo-list';
 import { TodoResults } from './components/todo-results';
 import { TodosContext } from './todo-context';
 import './index.scss';
+import { v4 } from 'uuid';
 
 const todosTemplate = [
   {
-    id: 0,
+    id: v4(),
     label: 'Fix an ability to display all tasks',
     checked: false,
   },
   {
-    id: 1,
+    id: v4(),
     label: 'Fix a layout, checkboxes should be listed in a column',
     checked: false,
   },
   {
-    id: 2,
+    id: v4(),
     label: 'Fix an ability to add a new task',
     checked: false,
   },
   {
-    id: 3,
+    id: v4(),
     label: 'Fix an ability to toggle a task',
     checked: false,
   },
   {
-    id: 4,
+    id: v4(),
     label: 'Fix an ability to delete a task',
     checked: false,
   },
   {
-    id: 5,
+    id: v4(),
     label: 'Fix an ability to count completed tasks',
     checked: false,
   },
 ];
 
 export const App = () => {
-  const [todos, setTodos] = React.useState([]);
+  //use template to initialize state
+  const [todos, setTodos] = React.useState(todosTemplate);
 
   return (
     <div className="root">
-      <TodosContext.Provider value={{ todos }}>
+      {/* contextProvider component available on the context instance is used to provide the context to its child components*/}
+      {/* All TodoList, TodoResults, TodoForm will consume context */}
+      {/* added setter - setTodos  */}
+      <TodosContext.Provider value={{ todos, setTodos }}>
         <TodoList />
         <TodoResults />
         <TodoForm />
