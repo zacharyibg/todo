@@ -2,16 +2,49 @@ import * as React from 'react';
 import { Checkbox } from '../checkbox';
 import { TodosContext } from '../../todo-context';
 import './todo-list.scss';
+import { v4 } from 'uuid';
 
 export const TodoList = () => {
   const { todos, setTodos } = React.useContext(TodosContext);
 
+  // console.log(typeof todos)
+  // console.log('todos', todos)
+
   const handleDelete = (id) => {
     // Fix an ability to delete task
+    //grab by id, remove from array
+    // filter() to iterate over array
+    // console.log(`delete id: ${id} clicked`)
+    setTodos(todos => todos.filter(todo => {
+      return todo.id !== id
+    }))
+
   };
 
+  //   const toggleCheck = (id) => {
+  //     let result = this.state.todos;
+  //     result = result.map(todo => {
+  //         if (todo.id === id) todo.checked = !todo.checked;
+  //         return todo;
+  //     })
+  //     this.setState({todos: result})
+  // }
+
+
+  //checks off, cannot toggle back
   const toggleCheck = (id) => {
     // Fix an ability to toggle task
+    //update state of object
+    //checked = !checked
+    setTodos(todos => todos.map(todo => {
+      if (todo.id === id) {
+        console.log('todo.id.checked', todo.id, todo.checked)
+        //fix: return map of opposite value
+        return { ...todo, checked: (!todo.checked) };
+      }
+      return todo;
+    }),
+    );
   };
 
   const handleKeyUp = (e, id) => {
@@ -23,7 +56,7 @@ export const TodoList = () => {
   return (
     <div className="todo-list">
       <span className="todo-list-title">Things to do:</span>
-      {todos.length ? (
+      {v4() ? (
         <div className="todo-list-content">
           {todos.map((todoItem) => (
             <Checkbox
