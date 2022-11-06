@@ -25,14 +25,6 @@ export const TodoForm = () => {
       checked: false
     }])
 
-    //prevents whitespace from being posted 
-    // if (!task.text || /^\s*$/.test(task.text)) {
-    //   return
-    // }
-    // if (!task){
-    //   console.log('no task entered')
-    // }
-
     //clears out input after task added
     setTask('');
   };

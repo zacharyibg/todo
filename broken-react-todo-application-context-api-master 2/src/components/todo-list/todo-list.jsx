@@ -21,17 +21,6 @@ export const TodoList = () => {
 
   };
 
-  //   const toggleCheck = (id) => {
-  //     let result = this.state.todos;
-  //     result = result.map(todo => {
-  //         if (todo.id === id) todo.checked = !todo.checked;
-  //         return todo;
-  //     })
-  //     this.setState({todos: result})
-  // }
-
-
-  //checks off, cannot toggle back
   const toggleCheck = (id) => {
     // Fix an ability to toggle task
     //update state of object
@@ -39,7 +28,7 @@ export const TodoList = () => {
     setTodos(todos => todos.map(todo => {
       if (todo.id === id) {
         console.log('todo.id.checked', todo.id, todo.checked)
-        //fix: return map of opposite value
+       //return map of opposite value
         return { ...todo, checked: (!todo.checked) };
       }
       return todo;
